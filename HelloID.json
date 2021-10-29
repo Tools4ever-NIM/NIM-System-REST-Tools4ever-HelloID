@@ -1,0 +1,128 @@
+{
+    "schema": {
+        "options": {},
+        "crud_objects": {
+            "users": {
+                "operations": {
+                    "users_get": {
+                        "method": "get",
+                        "call": {
+                            "path": "/api/v1/users"
+                        },
+                        "query_parameters": {}
+                    }
+                },
+                "parameters": {},
+                "key": "id",
+                "resources": {
+                    "id": "number*",
+                    "userGUID": "string*",
+                    "lastLogin": "string*",
+                    "source": "string*",
+                    "links": "string*",
+                    "firstName": "string*",
+                    "lastName": "string*",
+                    "userName": "string*",
+                    "managedByUserGUID": "string*",
+                    "isEnabled": "boolean*",
+                    "isLocked": "boolean*",
+                    "isDeleted": "boolean*",
+                    "mustChangePassword": "boolean*",
+                    "lockTime": "string*",
+                    "passwordLastSetTime": "string*",
+                    "roles": ["string*"],
+                    "adsid": "string*",
+                    "contactEmail": "string*",
+                    "userAttributes": "_:string*"
+                }
+            },
+            "groups": {
+                "operations": {
+                    "groups_get": {
+                        "method": "get",
+                        "call": {
+                            "path": "/api/v1/groups"
+                        },
+                        "query_parameters": {}
+                    }
+                },
+                "parameters": {},
+                "key": "id",
+                "resources": {
+                    "id": "number*",
+                    "groupGUID": "string*",
+                    "name": "string*",
+                    "managedByUserGUID": "string*",
+                    "isEnabled": "boolean*",
+                    "isDefault": "boolean*",
+                    "isDeleted": "boolean*",
+                    "isQrEnabled": "boolean*"
+                }
+            },
+            "roles": {
+                "operations": {
+                    "roles_get": {
+                        "method": "get",
+                        "call": {
+                            "path": "/api/v1/groups"
+                        },
+                        "query_parameters": {}
+                    }
+                },
+                "parameters": {},
+                "key": "roleGUID",
+                "resources": {
+                    "roleGUID": "string*",
+                    "name": "string*",
+                    "description": "string*",
+                    "isEnabled": "boolean*",
+                    "isDefault": "boolean*",
+                    "isSystem": "boolean*",
+                    "rights": ["string*"],
+                    "users": ["string*"],
+                    "GroupGuids": ["string*"]
+                }
+            }
+        }
+    },
+    "rest": {
+        "config": {
+            "baseUrl": "{tenant_id}",
+            "get": {
+                "maxPageCount": 500,
+                "query_parameters": {
+                },
+                "pagination": {
+                    "mode": "generic",
+                   "path":[],
+                    "page_size":1000,
+                    "params":{
+                        "take":"1000",
+                        "limit":999
+                    }
+                },
+                "selector":{
+                    "mode":"objects",
+                    "parameter":"orgs"
+                }
+            },
+            "authentication": "basic_auth",
+            "call_handling": "generic",
+            "test_connection": {
+                "url": "/api/v1/users?take=1&skip=0"
+            },
+            "accept": "application/json"
+        }
+        
+    },
+    "connection": {
+        "items": [
+            {
+                "name": "tenant_id",
+                "type": "textbox",
+                "label": "Tenent URL:",
+                "value": ""
+            }
+        ]
+    }
+}
