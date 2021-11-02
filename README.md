@@ -3,6 +3,12 @@
   <img src="https://www.tools4ever.nl/Static/images/helloid/ico-%20HelloID%20icon%20[RGB]@128.png">
 </p>
 
+In Development
+
+Issues
+- Root Objects not parsed properly
+- Skip/Take paging not available
+
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
 * [Introduction](#introduction)
