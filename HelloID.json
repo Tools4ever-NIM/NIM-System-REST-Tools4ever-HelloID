@@ -9,6 +9,9 @@
                         "call": {
                             "path": "/api/v1/users"
                         },
+                        "processing_options": {
+                            "output_field": null
+                        },
                         "query_parameters": {}
                     }
                 },
@@ -43,6 +46,9 @@
                         "call": {
                             "path": "/api/v1/groups"
                         },
+                        "processing_options": {
+                            "output_field": null
+                        },
                         "query_parameters": {}
                     }
                 },
@@ -65,6 +71,9 @@
                         "method": "get",
                         "call": {
                             "path": "/api/v1/groups"
+                        },
+                        "processing_options": {
+                            "output_field": null
                         },
                         "query_parameters": {}
                     }
