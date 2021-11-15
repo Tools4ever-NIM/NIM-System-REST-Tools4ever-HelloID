@@ -1,6 +1,7 @@
 # NIM-Conn-System-REST-HelloID
 <p align="center">
-  <img src="https://www.tools4ever.nl/Static/images/helloid/ico-%20HelloID%20icon%20[RGB]@128.png">
+  <img src="https://www.tools4ever.com/wp-content/uploads/2020/07/T4E2020-tagline.svg">
+  <img src="https://theme.zdassets.com/theme_assets/2082591/e23646bb2185911abf0bf3eff62ef12f5c2c8628.png">
 </p>
 
 In Development
