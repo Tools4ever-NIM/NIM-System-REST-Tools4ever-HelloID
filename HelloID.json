@@ -102,12 +102,12 @@
                 "query_parameters": {
                 },
                 "pagination": {
-                    "mode": "generic",
-                   "path":[],
+                    "mode": "skip_take",
+                    "path":[],
                     "page_size":1000,
                     "params":{
-                        "take":"1000",
-                        "limit":999
+                        "take":"{take_count}",
+                        "skip":"{skip_count}"
                     }
                 },
                 "selector":{
