@@ -4,7 +4,7 @@
         "crud_objects": {
             "users": {
                 "operations": {
-                    "users_get": {
+                    "UserList": {
                         "method": "get",
                         "call": {
                             "path": "/api/v1/users"
@@ -13,12 +13,32 @@
                             "output_field": null
                         },
                         "query_parameters": {}
+                    },
+                    "UserUpdate": {
+                        "method": "put",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/api/v1/users/{id}"
+                        },
+                        "semantics": "update",
+                        "resource_allowance_default": "mandatory",
+                        "resource_prohibited": [
+                            "lastLogin",
+                            "links",
+                            "isLocked",
+                            "isDeleted",
+                            "lockTime",
+                            "roles",
+                            "passwordLastSetTime"
+                        ],
+                        "resource_mandatory": [
+                            "userGUID"
+                        ]
                     }
                 },
                 "parameters": {},
-                "key": "id",
+                "key": "userGUID",
                 "resources": {
-                    "id": "number*",
                     "userGUID": "string*",
                     "lastLogin": "string*",
                     "source": "string*",
@@ -41,7 +61,7 @@
             },
             "groups": {
                 "operations": {
-                    "groups_get": {
+                    "GroupsList": {
                         "method": "get",
                         "call": {
                             "path": "/api/v1/groups"
@@ -53,9 +73,8 @@
                     }
                 },
                 "parameters": {},
-                "key": "id",
+                "key": "groupGUID",
                 "resources": {
-                    "id": "number*",
                     "groupGUID": "string*",
                     "name": "string*",
                     "managedByUserGUID": "string*",
@@ -67,10 +86,10 @@
             },
             "roles": {
                 "operations": {
-                    "roles_get": {
+                    "RolesList": {
                         "method": "get",
                         "call": {
-                            "path": "/api/v1/groups"
+                            "path": "/api/v1/roles"
                         },
                         "processing_options": {
                             "output_field": null
@@ -87,9 +106,44 @@
                     "isEnabled": "boolean*",
                     "isDefault": "boolean*",
                     "isSystem": "boolean*",
-                    "rights": ["string*"],
+                    "rights": ["number*"],
                     "users": ["string*"],
                     "GroupGuids": ["string*"]
+                }
+            },
+            "applications": {
+                "operations": {
+                    "ApplicationsList": {
+                        "method": "get",
+                        "call": {
+                            "path": "/api/v1/applications"
+                        },
+                        "processing_options": {
+                            "output_field": null
+                        },
+                        "query_parameters": {}
+                    }
+                },
+                "parameters": {},
+                "key": "applicationGUID",
+                "resources": {
+                    "name": "string*",
+                    "icon": "string*",
+                    "url": "string*",
+                    "helloIDUrl": "string*",
+                    "isEnabled": "boolean*",
+                    "type": "string*",
+                    "description": "string*",
+                    "applicationGUID": "string*",
+                    "creationTime": "string*",
+                    "modifyTime": "string*",
+                    "modifyUser": "string*",
+                    "links": [
+                        {
+                            "title": "_:string*",
+                            "location": "_:string*"
+                        }
+                    ]
                 }
             }
         }
@@ -98,13 +152,12 @@
         "config": {
             "baseUrl": "{tenant_id}",
             "get": {
-                "maxPageCount": 500,
                 "query_parameters": {
                 },
                 "pagination": {
                     "mode": "skip_take",
                     "path":[],
-                    "page_size":1000,
+                    "page_size":"{page_size}",
                     "params":{
                         "take":"{take_count}",
                         "skip":"{skip_count}"
@@ -131,6 +184,12 @@
                 "type": "textbox",
                 "label": "Tenent URL:",
                 "value": ""
+            },
+            {
+                "name": "page_size",
+                "type": "textbox",
+                "label": "Page Size",
+                "value": "1000"
             }
         ]
     }
