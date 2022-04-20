@@ -18,10 +18,10 @@
                         "method": "put",
                         "call": {
                             "mode": "normal",
-                            "path": "/api/v1/users/{id}"
+                            "path": "/api/v1/users/{userGUID}"
                         },
                         "semantics": "update",
-                        "resource_allowance_default": "mandatory",
+                        "resource_allowance_default": "optional",
                         "resource_prohibited": [
                             "lastLogin",
                             "links",
@@ -56,7 +56,38 @@
                     "roles": ["string*"],
                     "adsid": "string*",
                     "contactEmail": "string*",
-                    "userAttributes": "_:string*"
+                    "userAttributes": {
+                        "ssoassertion001": "_:string*",
+                        "thumbnailphoto": "_:string*",
+                        "phonenumber": "_:string*",
+                        "department": "_:string*",
+                        "description": "_:string*",
+                        "objectguid": "_:string*",
+                        "contactemailtemp": "_:string*",
+                        "samaccountname": "_:string*",
+                        "employeeid": "_:string*",
+                        "employeetype": "_:string*",
+                        "extensionattribute1": "_:string*",
+                        "extensionattribute2": "_:string*",
+                        "extensionattribute3": "_:string*",
+                        "extensionattribute4": "_:string*",
+                        "extensionattribute5": "_:string*",
+                        "extensionattribute6": "_:string*",
+                        "extensionattribute7": "_:string*",
+                        "extensionattribute8": "_:string*",
+                        "extensionattribute9": "_:string*",
+                        "extensionattribute10": "_:string*",
+                        "extensionattribute11": "_:string*",
+                        "extensionattribute12": "_:string*",
+                        "extensionattribute13": "_:string*",
+                        "extensionattribute14": "_:string*",
+                        "extensionattribute15": "_:string*",
+                        "title": "_:string*",
+                        "azureimmutableid": "_:string*",
+                        "language": "_:string*",
+                        "qrhash": "_:string*",
+                        "qr": "_:string*"
+                }
                 }
             },
             "groups": {
