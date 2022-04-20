@@ -4,12 +4,6 @@
   <a href="https://www.tools4ever.com/software/helloid-idaas-cloud-single-sign-on/"><img src="https://theme.zdassets.com/theme_assets/2082591/e23646bb2185911abf0bf3eff62ef12f5c2c8628.png"></a>
 </p>
 
-In Development
-
-Issues
-- Root Objects not parsed properly
-- Skip/Take paging not available
-
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
 * [Introduction](#introduction)
