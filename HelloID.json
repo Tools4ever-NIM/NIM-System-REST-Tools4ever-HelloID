@@ -14,6 +14,28 @@
                         },
                         "query_parameters": {}
                     },
+                    "UserCreate": {
+                        "method": "post",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/api/v1/users"
+                        },
+                        "semantics": "update",
+                        "resource_allowance_default": "optional",
+                        "resource_prohibited": [
+                            "lastLogin",
+                            "links",
+                            "isLocked",
+                            "isDeleted",
+                            "lockTime",
+                            "roles",
+                            "passwordLastSetTime",
+                            "userGUID"
+                        ],
+                        "resource_mandatory": [
+                            "username"
+                        ]
+                    },
                     "UserUpdate": {
                         "method": "put",
                         "call": {
@@ -33,6 +55,80 @@
                         ],
                         "resource_mandatory": [
                             "userGUID"
+                        ]
+                    },
+                    "UserDelete": {
+                        "method": "delete",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/api/v1/users/{userGUID}"
+                        },
+                        "semantics": "delete",
+                        "resource_allowance_default": "prohibited",
+                        "resource_prohibited": [
+                            "lastLogin",
+                            "links",
+                            "isLocked",
+                            "isDeleted",
+                            "lockTime",
+                            "roles",
+                            "passwordLastSetTime"
+                        ],
+                        "resource_mandatory": [
+                            "userGUID"
+                        ]
+                    },
+                    "UserCredentialUpdate": {
+                        "method": "post",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/api/v1/users/addUserCredentials/{userGUID}"
+                        },
+                        "body": {
+                            "username": "{username}",
+                            "password": "{password}"
+                        },
+                        "semantics": "update",
+                        "resource_allowance_default": "prohibited",
+                        "resource_prohibited": [
+                            "lastLogin",
+                            "links",
+                            "isLocked",
+                            "isDeleted",
+                            "lockTime",
+                            "roles",
+                            "passwordLastSetTime"
+                        ],
+                        "resource_mandatory": [
+                            "userGUID",
+                            "username",
+                            "password"
+                        ]
+                    },
+                    "UserPhotoUpdate": {
+                        "method": "put",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/api/v1/users/{userGUID}/photo"
+                        },
+                        "body": {
+                            "profilePhotoBase64":"{profilePhotoBase64}"
+                            
+                        },
+                        "semantics": "update",
+                        "resource_allowance_default": "prohibited",
+                        "resource_prohibited": [
+                            "lastLogin",
+                            "links",
+                            "isLocked",
+                            "isDeleted",
+                            "lockTime",
+                            "roles",
+                            "passwordLastSetTime"
+                        ],
+                        "resource_mandatory": [
+                            "userGUID",
+                            "profilePhotoBase64"
                         ]
                     }
                 },
@@ -56,6 +152,8 @@
                     "roles": ["string*"],
                     "adsid": "string*",
                     "contactEmail": "string*",
+                    "password": "string*",
+                    "profilePhotoBase64": "string*",
                     "userAttributes": {
                         "ssoassertion001": "_:string*",
                         "thumbnailphoto": "_:string*",
@@ -90,6 +188,45 @@
                 }
                 }
             },
+            "members": {
+                "operations": {
+                    "MembersList": {
+                        "method": "get",
+                        "call": {
+                            "mode": "iteration",
+                            "table": "groups",
+                            "iterator": "groupGuid",
+                            "path": "/api/v1/groups/{iterator}",
+                            "base": {
+                                "groupGuid": "{iterator}"
+                            }
+                        },
+                        "processing_options": {
+                            "output_field": null
+                        },
+                        "query_parameters": {
+                                
+                        },
+                        "maxSessionCount": 20
+                    }
+                },
+                "parameters": {},
+                "key": "groupGUID",
+                "resources": {
+                    "name": "string*",
+                    "groupGuid": "string*",
+                    "immutableId": "string*",
+                    "isEnabled": "boolean*",
+                    "isDefault": "boolean*",
+                    "isQrEnabled": "boolean*",
+                    "managedByUserGuid": "string*",
+                    "users": ["string*"],
+                    "applications": ["string*"],
+                    "selfServiceProducts": ["string*"],
+                    "groups": ["string*"],
+                    "selfServiceCategories": ["string*"]
+                }
+            },
             "groups": {
                 "operations": {
                     "GroupsList": {
@@ -101,6 +238,37 @@
                             "output_field": null
                         },
                         "query_parameters": {}
+                    },
+                    "UserCreate": {
+                        "method": "post",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/api/v1/groups/{groupGUID}"
+                        },
+                        "semantics": "create",
+                        "resource_allowance_default": "optional",
+                        "resource_prohibited": [
+                            "isDeleted",
+                            "groupGUID"
+                        ],
+                        "resource_mandatory": [
+                            "name"
+                        ]
+                    },
+                    "UserUpdate": {
+                        "method": "put",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/api/v1/groups/{groupGUID}"
+                        },
+                        "semantics": "update",
+                        "resource_allowance_default": "optional",
+                        "resource_prohibited": [
+                            "isDeleted"
+                        ],
+                        "resource_mandatory": [
+                            "groupGUID"
+                        ]
                     }
                 },
                 "parameters": {},
