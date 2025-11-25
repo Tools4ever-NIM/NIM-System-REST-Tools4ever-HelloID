@@ -1,6 +1,5 @@
 {
     "schema": {
-        "options": {},
         "crud_objects": {
             "users": {
                 "operations": {
@@ -11,8 +10,7 @@
                         },
                         "processing_options": {
                             "output_field": null
-                        },
-                        "query_parameters": {}
+                        }
                     },
                     "UserCreate": {
                         "method": "post",
@@ -112,8 +110,7 @@
                             "path": "/api/v1/users/{userGUID}/photo"
                         },
                         "body": {
-                            "profilePhotoBase64":"{profilePhotoBase64}"
-                            
+                            "profilePhotoBase64": "{profilePhotoBase64}"
                         },
                         "semantics": "update",
                         "resource_allowance_default": "prohibited",
@@ -132,7 +129,6 @@
                         ]
                     }
                 },
-                "parameters": {},
                 "key": "userGUID",
                 "resources": {
                     "userGUID": "string*",
@@ -142,14 +138,16 @@
                     "firstName": "string*",
                     "lastName": "string*",
                     "userName": "string*",
-                    "managedByUserGUID": "string*",
+                    "managedByuserGUID": "string*",
                     "isEnabled": "boolean*",
                     "isLocked": "boolean*",
                     "isDeleted": "boolean*",
                     "mustChangePassword": "boolean*",
                     "lockTime": "string*",
                     "passwordLastSetTime": "string*",
-                    "roles": ["string*"],
+                    "roles": [
+                        "string*"
+                    ],
                     "adsid": "string*",
                     "contactEmail": "string*",
                     "password": "string*",
@@ -185,7 +183,7 @@
                         "language": "_:string*",
                         "qrhash": "_:string*",
                         "qr": "_:string*"
-                }
+                    }
                 }
             },
             "members": {
@@ -204,14 +202,10 @@
                         "processing_options": {
                             "output_field": null
                         },
-                        "query_parameters": {
-                                
-                        },
                         "maxSessionCount": 20
                     }
                 },
-                "parameters": {},
-                "key": "groupGUID",
+                "key": "groupGuid",
                 "resources": {
                     "name": "string*",
                     "groupGuid": "string*",
@@ -220,11 +214,21 @@
                     "isDefault": "boolean*",
                     "isQrEnabled": "boolean*",
                     "managedByUserGuid": "string*",
-                    "users": ["string*"],
-                    "applications": ["string*"],
-                    "selfServiceProducts": ["string*"],
-                    "groups": ["string*"],
-                    "selfServiceCategories": ["string*"]
+                    "users": [
+                        "string*"
+                    ],
+                    "applications": [
+                        "string*"
+                    ],
+                    "selfServiceProducts": [
+                        "string*"
+                    ],
+                    "groups": [
+                        "string*"
+                    ],
+                    "selfServiceCategories": [
+                        "string*"
+                    ]
                 }
             },
             "groups": {
@@ -236,20 +240,19 @@
                         },
                         "processing_options": {
                             "output_field": null
-                        },
-                        "query_parameters": {}
+                        }
                     },
                     "UserCreate": {
                         "method": "post",
                         "call": {
                             "mode": "normal",
-                            "path": "/api/v1/groups/{groupGUID}"
+                            "path": "/api/v1/groups/{groupGuid}"
                         },
                         "semantics": "create",
                         "resource_allowance_default": "optional",
                         "resource_prohibited": [
                             "isDeleted",
-                            "groupGUID"
+                            "groupGuid"
                         ],
                         "resource_mandatory": [
                             "name"
@@ -259,7 +262,7 @@
                         "method": "put",
                         "call": {
                             "mode": "normal",
-                            "path": "/api/v1/groups/{groupGUID}"
+                            "path": "/api/v1/groups/{groupGuid}"
                         },
                         "semantics": "update",
                         "resource_allowance_default": "optional",
@@ -267,16 +270,15 @@
                             "isDeleted"
                         ],
                         "resource_mandatory": [
-                            "groupGUID"
+                            "groupGuid"
                         ]
                     }
                 },
-                "parameters": {},
-                "key": "groupGUID",
+                "key": "groupGuid",
                 "resources": {
-                    "groupGUID": "string*",
+                    "groupGuid": "string*",
                     "name": "string*",
-                    "managedByUserGUID": "string*",
+                    "managedByUserGuid": "string*",
                     "isEnabled": "boolean*",
                     "isDefault": "boolean*",
                     "isDeleted": "boolean*",
@@ -292,22 +294,26 @@
                         },
                         "processing_options": {
                             "output_field": null
-                        },
-                        "query_parameters": {}
+                        }
                     }
                 },
-                "parameters": {},
-                "key": "roleGUID",
+                "key": "roleGuid",
                 "resources": {
-                    "roleGUID": "string*",
+                    "roleGuid": "string*",
                     "name": "string*",
                     "description": "string*",
                     "isEnabled": "boolean*",
                     "isDefault": "boolean*",
                     "isSystem": "boolean*",
-                    "rights": ["number*"],
-                    "users": ["string*"],
-                    "GroupGuids": ["string*"]
+                    "rights": [
+                        "number*"
+                    ],
+                    "users": [
+                        "string*"
+                    ],
+                    "groupGuids": [
+                        "string*"
+                    ]
                 }
             },
             "applications": {
@@ -319,12 +325,10 @@
                         },
                         "processing_options": {
                             "output_field": null
-                        },
-                        "query_parameters": {}
+                        }
                     }
                 },
-                "parameters": {},
-                "key": "applicationGUID",
+                "key": "applicationGuid",
                 "resources": {
                     "name": "string*",
                     "icon": "string*",
@@ -333,7 +337,7 @@
                     "isEnabled": "boolean*",
                     "type": "string*",
                     "description": "string*",
-                    "applicationGUID": "string*",
+                    "applicationGuid": "string*",
                     "creationTime": "string*",
                     "modifyTime": "string*",
                     "modifyUser": "string*",
@@ -349,22 +353,19 @@
     },
     "rest": {
         "config": {
-            "baseUrl": "{tenant_id}",
+            "baseUrl": "https://{tenant_id}",
             "get": {
-                "query_parameters": {
-                },
                 "pagination": {
                     "mode": "skip_take",
-                    "path":[],
-                    "page_size":"{page_size}",
-                    "params":{
-                        "take":"{take_count}",
-                        "skip":"{skip_count}"
+                    "page_size": "{page_size}",
+                    "params": {
+                        "take": "{take_count}",
+                        "skip": "{skip_count}"
                     }
                 },
-                "selector":{
-                    "mode":"objects",
-                    "parameter":"orgs"
+                "selector": {
+                    "mode": "objects",
+                    "parameter": "orgs"
                 }
             },
             "authentication": "basic_auth",
@@ -374,7 +375,6 @@
             },
             "accept": "application/json"
         }
-        
     },
     "connection": {
         "items": [
@@ -382,13 +382,30 @@
                 "name": "tenant_id",
                 "type": "textbox",
                 "label": "Tenent URL:",
-                "value": ""
+                "value": "customer.helloid.com",
+                "order": 1
             },
+            {
+                "name": "user_name",
+                "type": "textbox",
+                "label": "API Key",
+                "required": true,
+                "order": 2
+            },
+            {
+                "name": "password",
+                "type": "textbox",
+                "label": "API Secret",
+                "required": true,
+                "order": 3
+            },
+
             {
                 "name": "page_size",
                 "type": "textbox",
                 "label": "Page Size",
-                "value": "1000"
+                "value": "1000",
+                "order": 4
             }
         ]
     }
